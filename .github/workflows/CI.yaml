@@ -1,0 +1,28 @@
+name: push‑image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: log in to registry
+        uses: docker/login-action@v2
+        with:
+          registry: scr.scynettghana.com
+          username: docker
+          password: Password
+
+      - name: build and push hello‑world
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: scr.scynettghana.com/hello-world:latest
