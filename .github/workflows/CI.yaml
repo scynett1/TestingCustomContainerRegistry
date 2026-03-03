@@ -20,9 +20,8 @@ jobs:
           username: docker
           password: password
 
-      - name: build and push hello‑world
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: scr.scynettghana.com/hello-world:latest
+      - name: pull, tag and push hello‑world
+        run: |
+          docker pull hello-world
+          docker tag hello-world scr.scynettghana.com/hello-world:latest
+          docker push scr.scynettghana.com/hello-world:latest
