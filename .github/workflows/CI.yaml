@@ -18,7 +18,7 @@ jobs:
         with:
           registry: scr.scynettghana.com
           username: docker
-          password: Password
+          password: password
 
       - name: build and push hello‑world
         uses: docker/build-push-action@v4
